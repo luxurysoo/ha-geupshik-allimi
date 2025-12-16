@@ -58,7 +58,9 @@ class GeupshikSensor(CoordinatorEntity, SensorEntity):
             raw_menu = data.get('DDISH_NM')
             cleaned_menu = self._api.clean_menu(raw_menu)
             school_name = data.get('SCHUL_NM', 'School')
-            tts_text = self._api.format_tts(date_str, school_name, cleaned_menu)
+            
+            is_tomorrow = (self._name_suffix == "Tomorrow")
+            tts_text = self._api.format_tts(date_str, school_name, cleaned_menu, is_tomorrow)
             calories = data.get('CAL_INFO')
             
             return {
@@ -73,7 +75,10 @@ class GeupshikSensor(CoordinatorEntity, SensorEntity):
             # Generate "No meal" TTS
             dt = datetime.strptime(date_str, "%Y%m%d")
             spoken_date = dt.strftime("%Y년 %m월 %d일")
-            tts_text = f"{spoken_date}, 오늘은 급식이 없습니다."
+            
+            is_tomorrow = (self._name_suffix == "Tomorrow")
+            # We can use the api helper now for consistency
+            tts_text = self._api.format_tts(date_str, "", None, is_tomorrow)
             
             return {
                 "menu_clean": "None",

@@ -75,12 +75,15 @@ class GeupshikAPI:
         
         return cleaned
 
-    def format_tts(self, date_str, school_name, cleaned_menu):
+    def format_tts(self, date_str, school_name, cleaned_menu, is_tomorrow=False):
         """Format the spoken text."""
         dt = datetime.strptime(date_str, "%Y%m%d")
         spoken_date = dt.strftime("%Y년 %m월 %d일")
         
+        day_text = "내일" if is_tomorrow else "오늘"
+        # Optional: "내일의" vs "내일" - "내일 급식" sounds natural.
+        
         if not cleaned_menu:
-            return f"{spoken_date}, 오늘은 급식이 없습니다."
+            return f"{spoken_date}, {day_text}은 급식이 없습니다."
             
-        return f"{spoken_date}, {school_name} 오늘의 급식 메뉴를 알려드릴게요. {cleaned_menu} 입니다."
+        return f"{spoken_date}, {school_name} {day_text}의 급식 메뉴를 알려드릴게요. {cleaned_menu} 입니다."
