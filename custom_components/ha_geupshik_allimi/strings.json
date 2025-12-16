@@ -1,0 +1,21 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "School Meal Info Setup",
+                "description": "Enter your school codes from the NEIS portal.",
+                "data": {
+                    "atpt_ofcdc_sc_code": "Office Code (e.g., C10)",
+                    "sd_schul_code": "School Code (e.g., 7201202)",
+                    "api_key": "API Key (Optional; 32 chars)"
+                }
+            }
+        },
+        "error": {
+            "auth": "Invalid API Key or Codes"
+        },
+        "abort": {
+            "already_configured": "Service is already configured"
+        }
+    }
+}
