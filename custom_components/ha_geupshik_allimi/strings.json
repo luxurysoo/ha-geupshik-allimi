@@ -5,8 +5,8 @@
                 "title": "School Meal Info Setup",
                 "description": "Enter your school codes from the NEIS portal.",
                 "data": {
-                    "atpt_ofcdc_sc_code": "Office Code (B10)",
-                    "sd_schul_code": "School Code (7081518)",
+                    "atpt_ofcdc_sc_code": "B10",
+                    "sd_schul_code": "7081518",
                     "api_key": "704587df66a644009c7a2d032f4ccf99"
                 }
             }
